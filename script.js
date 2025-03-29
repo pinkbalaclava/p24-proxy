@@ -158,6 +158,13 @@ function insertVoiceAssistant(embedCode) {
         console.log('ElevenLabs Voice Assistant embed inserted');
     } else {
         console.error('Voice assistant container not found');
+        // Create the container if it doesn't exist
+        const newContainer = document.createElement('div');
+        newContainer.id = 'voice-assistant-container';
+        newContainer.className = 'voice-assistant-container';
+        document.body.appendChild(newContainer);
+        newContainer.innerHTML = embedCode;
+        console.log('Created and inserted ElevenLabs Voice Assistant embed');
     }
 }
 

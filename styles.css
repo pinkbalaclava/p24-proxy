@@ -1,4 +1,3 @@
-
 /* Base Styles */
 :root {
   --primary-color: #dc2626;
@@ -635,7 +634,12 @@ h1 {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Responsive Styles */
