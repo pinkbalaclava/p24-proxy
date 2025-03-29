@@ -1,3 +1,4 @@
+
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize dropdown functionality
@@ -166,6 +167,16 @@ function insertVoiceAssistant(embedCode) {
         newContainer.innerHTML = embedCode;
         console.log('Created and inserted ElevenLabs Voice Assistant embed');
     }
+    
+    // Force a reflow to ensure the container is properly positioned and displayed
+    setTimeout(() => {
+        const assistantContainer = document.getElementById('voice-assistant-container');
+        if (assistantContainer) {
+            assistantContainer.style.display = 'none';
+            void assistantContainer.offsetHeight; // Force reflow
+            assistantContainer.style.display = 'flex';
+        }
+    }, 1000);
 }
 
 // Expose this function globally so it can be called from the console
