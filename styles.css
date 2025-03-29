@@ -635,8 +635,8 @@ h1 {
   bottom: 20px;
   right: 20px;
   z-index: 9999;
-  width: 70px;
-  height: 70px;
+  width: 250px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
