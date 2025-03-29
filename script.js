@@ -1,4 +1,3 @@
-
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize dropdown functionality
@@ -12,6 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize pagination
     initPagination();
+    
+    // Insert the ElevenLabs Voice Assistant
+    window.insertVoiceAssistant(
+        `<elevenlabs-convai agent-id="QEf17rEjtX47iwpSuaG4"></elevenlabs-convai><script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>`
+    );
     
     console.log('Property listing page initialized');
 });
@@ -147,12 +151,11 @@ function initPagination() {
 }
 
 // Function to insert the voice assistant embed
-// This function will be called by the user after they provide their embed code
 function insertVoiceAssistant(embedCode) {
     const container = document.getElementById('voice-assistant-container');
     if (container) {
         container.innerHTML = embedCode;
-        console.log('Voice assistant embed inserted');
+        console.log('ElevenLabs Voice Assistant embed inserted');
     } else {
         console.error('Voice assistant container not found');
     }
