@@ -1,26 +1,367 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vocal-listing-navigator</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property To Rent in Ballito and Dolphin Coast</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="description" content="Find properties to rent in Ballito and Dolphin Coast">
+</head>
+<body>
+  <!-- Header with logo and search -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="/" class="logo" id="site-logo">
+        <img src="public/lovable-uploads/74502427-121d-4e45-92ff-dea85714b8ac.png" alt="Private Property Logo" class="logo-img">
+      </a>
 
-    <meta property="og:title" content="Lovable Generated Project" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="location-search" class="search-input" placeholder="Ballito and Dolphin Coast" value="Ballito and Dolphin Coast">
+          <button class="clear-search"><i class="fas fa-times"></i></button>
+        </div>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+        <div class="filter-controls">
+          <div class="dropdown" id="property-type-dropdown">
+            <button class="dropdown-toggle">
+              Property Types
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-menu">
+              <div class="dropdown-item"><input type="checkbox" id="house"> <label for="house">House</label></div>
+              <div class="dropdown-item"><input type="checkbox" id="apartment"> <label for="apartment">Apartment</label></div>
+              <div class="dropdown-item"><input type="checkbox" id="townhouse"> <label for="townhouse">Townhouse</label></div>
+            </div>
+          </div>
 
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+          <div class="dropdown" id="min-price-dropdown">
+            <button class="dropdown-toggle">
+              Min price
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-menu">
+              <div class="dropdown-item">R 5 000</div>
+              <div class="dropdown-item">R 10 000</div>
+              <div class="dropdown-item">R 15 000</div>
+              <div class="dropdown-item">R 20 000</div>
+            </div>
+          </div>
+
+          <span class="price-separator">-</span>
+
+          <div class="dropdown" id="max-price-dropdown">
+            <button class="dropdown-toggle">
+              Max price
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-menu">
+              <div class="dropdown-item">R 20 000</div>
+              <div class="dropdown-item">R 25 000</div>
+              <div class="dropdown-item">R 30 000</div>
+              <div class="dropdown-item">No limit</div>
+            </div>
+          </div>
+
+          <div class="dropdown" id="beds-dropdown">
+            <button class="dropdown-toggle">
+              Any beds
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-menu">
+              <div class="dropdown-item">Any</div>
+              <div class="dropdown-item">1+</div>
+              <div class="dropdown-item">2+</div>
+              <div class="dropdown-item">3+</div>
+              <div class="dropdown-item">4+</div>
+            </div>
+          </div>
+
+          <button class="filter-btn" id="filters-button">Filters</button>
+          <button class="search-btn" id="search-button">Search</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <section class="page-header">
+        <h1 id="page-title">Property To Rent in Ballito and Dolphin Coast</h1>
+        <div class="breadcrumb" id="breadcrumb-nav">
+          <a href="/" class="breadcrumb-item">South Africa</a>
+          <i class="fas fa-chevron-right breadcrumb-separator"></i>
+          <a href="/kwazulu-natal" class="breadcrumb-item">KwaZulu Natal</a>
+          <i class="fas fa-chevron-right breadcrumb-separator"></i>
+          <span class="breadcrumb-item current">Ballito and Dolphin Coast</span>
+        </div>
+
+        <div class="results-controls">
+          <div class="results-count" id="results-count">1-20 of 1 618 results</div>
+          <div class="sort-control">
+            <span class="sort-label">Sort by</span>
+            <div class="dropdown" id="sort-dropdown">
+              <button class="dropdown-toggle">
+                Featured
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="dropdown-menu">
+                <div class="dropdown-item">Featured</div>
+                <div class="dropdown-item">Price (Low to High)</div>
+                <div class="dropdown-item">Price (High to Low)</div>
+                <div class="dropdown-item">Newest</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="content-wrapper">
+        <section class="property-listings" id="property-listings">
+          <!-- Property Card 1 -->
+          <div class="property-card" id="property-1">
+            <div class="property-image">
+              <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="3 Bed Apartment in La Mercy" class="property-img">
+              <span class="property-tag new-tag">New</span>
+              <span class="property-tag available-tag">Available</span>
+              <button class="favorite-btn"><i class="far fa-heart"></i></button>
+            </div>
+            <div class="property-details">
+              <h2 class="property-price" id="property-1-price">R 15 000</h2>
+              <h3 class="property-title" id="property-1-title">3 Bed Apartment</h3>
+              <p class="property-location" id="property-1-location">La Mercy</p>
+              <div class="property-features">
+                <div class="feature" id="property-1-bedrooms">
+                  <i class="fas fa-bed"></i> 
+                  <span>3</span>
+                </div>
+                <div class="feature" id="property-1-bathrooms">
+                  <i class="fas fa-bath"></i>
+                  <span>2</span>
+                </div>
+              </div>
+              <p class="property-description" id="property-1-description">
+                This newly built, pet friendly development in la mercy is perfect for beach lovers seeking a peaceful place to call home.
+              </p>
+              <div class="property-footer">
+                <div class="agency">
+                  <img src="https://via.placeholder.com/50" alt="Agency Logo" class="agency-logo">
+                  <span class="promoted-label">Promoted</span>
+                </div>
+                <div class="agent">
+                  <span class="agent-name">Jessica Wolhuter</span>
+                  <img src="https://via.placeholder.com/40" alt="Agent Photo" class="agent-photo">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property Card 2 -->
+          <div class="property-card" id="property-2">
+            <div class="property-image">
+              <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="3 Bed Townhouse in La Mercy" class="property-img">
+              <span class="property-tag new-tag">New</span>
+              <span class="property-tag available-tag">Available</span>
+              <span class="property-tag media-tag">HD Media</span>
+              <button class="favorite-btn"><i class="far fa-heart"></i></button>
+            </div>
+            <div class="property-details">
+              <h2 class="property-price" id="property-2-price">R 16 500</h2>
+              <h3 class="property-title" id="property-2-title">3 Bed Townhouse</h3>
+              <p class="property-location" id="property-2-location">La Mercy</p>
+              <div class="property-features">
+                <div class="feature" id="property-2-bedrooms">
+                  <i class="fas fa-bed"></i> 
+                  <span>3</span>
+                </div>
+                <div class="feature" id="property-2-bathrooms">
+                  <i class="fas fa-bath"></i>
+                  <span>2</span>
+                </div>
+              </div>
+              <p class="property-description" id="property-2-description">
+                This modern beautiful 3 bedroom, 2 bathroom apartment situated in a sought after area in la mercy.
+              </p>
+              <div class="property-footer">
+                <div class="agency">
+                  <img src="https://via.placeholder.com/50" alt="Agency Logo" class="agency-logo">
+                  <span class="promoted-label">Promoted</span>
+                </div>
+                <div class="agent">
+                  <span class="agent-name">Mohammed Parak</span>
+                  <img src="https://via.placeholder.com/40" alt="Agent Photo" class="agent-photo">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property Card 3 -->
+          <div class="property-card" id="property-3">
+            <div class="property-image">
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="2 Bed Apartment in Salt Rock" class="property-img">
+              <button class="favorite-btn"><i class="far fa-heart"></i></button>
+            </div>
+            <div class="property-details">
+              <h2 class="property-price" id="property-3-price">R 13 500</h2>
+              <h3 class="property-title" id="property-3-title">2 Bed Apartment</h3>
+              <p class="property-location" id="property-3-location">Salt Rock</p>
+              <div class="property-features">
+                <div class="feature" id="property-3-bedrooms">
+                  <i class="fas fa-bed"></i> 
+                  <span>2</span>
+                </div>
+                <div class="feature" id="property-3-bathrooms">
+                  <i class="fas fa-bath"></i>
+                  <span>2</span>
+                </div>
+              </div>
+              <p class="property-description" id="property-3-description">
+                Stunning apartment with beach views in the heart of Salt Rock, within walking distance to beaches and restaurants.
+              </p>
+              <div class="property-footer">
+                <div class="agency">
+                  <img src="https://via.placeholder.com/50" alt="Agency Logo" class="agency-logo">
+                </div>
+                <div class="agent">
+                  <span class="agent-name">Sarah Johnson</span>
+                  <img src="https://via.placeholder.com/40" alt="Agent Photo" class="agent-photo">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property Card 4 -->
+          <div class="property-card" id="property-4">
+            <div class="property-image">
+              <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="4 Bed House in Ballito" class="property-img">
+              <span class="property-tag available-tag">Available</span>
+              <button class="favorite-btn"><i class="far fa-heart"></i></button>
+            </div>
+            <div class="property-details">
+              <h2 class="property-price" id="property-4-price">R 25 000</h2>
+              <h3 class="property-title" id="property-4-title">4 Bed House</h3>
+              <p class="property-location" id="property-4-location">Ballito</p>
+              <div class="property-features">
+                <div class="feature" id="property-4-bedrooms">
+                  <i class="fas fa-bed"></i> 
+                  <span>4</span>
+                </div>
+                <div class="feature" id="property-4-bathrooms">
+                  <i class="fas fa-bath"></i>
+                  <span>3</span>
+                </div>
+              </div>
+              <p class="property-description" id="property-4-description">
+                Luxurious family home in secure estate with pool and entertainment area, close to schools and shopping centers.
+              </p>
+              <div class="property-footer">
+                <div class="agency">
+                  <img src="https://via.placeholder.com/50" alt="Agency Logo" class="agency-logo">
+                  <span class="promoted-label">Promoted</span>
+                </div>
+                <div class="agent">
+                  <span class="agent-name">David Smith</span>
+                  <img src="https://via.placeholder.com/40" alt="Agent Photo" class="agent-photo">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination" id="pagination">
+            <span class="pagination-info">Page 1 of 81</span>
+            <div class="pagination-controls">
+              <button class="pagination-btn active">1</button>
+              <button class="pagination-btn">2</button>
+              <button class="pagination-btn">3</button>
+              <button class="pagination-btn">4</button>
+              <button class="pagination-btn">5</button>
+              <span class="pagination-dots">...</span>
+              <button class="pagination-btn">81</button>
+              <button class="pagination-btn next">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="sidebar">
+          <!-- Property Alerts Section -->
+          <div class="sidebar-widget property-alerts" id="property-alerts">
+            <div class="property-alerts-content">
+              <img src="https://via.placeholder.com/250x400" alt="Mobile app screenshot" class="alerts-image">
+              <h3 class="widget-title">Get instant property alerts</h3>
+              <p class="widget-description">Be the first to see new properties for rental in the Ballito and Dolphin Coast area.</p>
+              <button class="alert-btn" id="manage-alerts-btn">Manage property alerts</button>
+            </div>
+          </div>
+          
+          <!-- Areas Section -->
+          <div class="sidebar-widget areas-widget" id="areas-widget">
+            <h3 class="widget-title">Areas in Ballito and Dolphin Coast</h3>
+            <ul class="areas-list">
+              <li><a href="#" class="area-link">Ballito</a></li>
+              <li><a href="#" class="area-link">Blythedale to Zinkwazi</a></li>
+              <li><a href="#" class="area-link">Verulam</a></li>
+              <li><a href="#" class="area-link">Tongaat</a></li>
+              <li><a href="#" class="area-link">Umdloti to Westbrook</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>For Property Seekers</h4>
+          <ul>
+            <li><a href="#">Buy</a></li>
+            <li><a href="#">Rent</a></li>
+            <li><a href="#">Sell</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>For Estate Agents</h4>
+          <ul>
+            <li><a href="#">Advertise</a></li>
+            <li><a href="#">Agent Portal</a></li>
+            <li><a href="#">Resources</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect With Us</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Private Property. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Voice Assistant Embed Container -->
+  <div id="voice-assistant-container" class="voice-assistant-container">
+    <!-- Voice assistant embed will go here -->
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  <script src="script.js"></script>
+</body>
 </html>
