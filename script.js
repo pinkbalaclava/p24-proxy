@@ -1,4 +1,3 @@
-
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize dropdown functionality
@@ -151,14 +150,17 @@ function initPagination() {
     }
 }
 
-// Function to insert the voice assistant embed
+// Updated insertVoiceAssistant function to ensure embed is correctly inserted
 function insertVoiceAssistant(embedCode) {
     const container = document.getElementById('voice-assistant-container');
     if (container) {
+        // Clear any existing content
+        container.innerHTML = '';
+        
+        // Insert the new embed code
         container.innerHTML = embedCode;
         console.log('ElevenLabs Voice Assistant embed inserted');
     } else {
-        console.error('Voice assistant container not found');
         // Create the container if it doesn't exist
         const newContainer = document.createElement('div');
         newContainer.id = 'voice-assistant-container';
@@ -179,8 +181,10 @@ function insertVoiceAssistant(embedCode) {
     }, 1000);
 }
 
-// Expose this function globally so it can be called from the console
-window.insertVoiceAssistant = insertVoiceAssistant;
+// Call the function immediately with the provided embed code
+window.insertVoiceAssistant(
+    `<elevenlabs-convai agent-id="QEf17rEjtX47iwpSuaG4"></elevenlabs-convai><script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>`
+);
 
 // Element visibility tracking for voice assistant context awareness
 // This helps the voice assistant know what's currently visible on the screen
