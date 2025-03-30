@@ -13,9 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPagination();
     
     // Insert the ElevenLabs Voice Assistant
-    window.insertVoiceAssistant(
-        `<elevenlabs-convai agent-id="QEf17rEjtX47iwpSuaG4"></elevenlabs-convai><script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>`
-    );
+    insertElevenLabsVoiceAssistant();
     
     console.log('Property listing page initialized');
 });
@@ -150,41 +148,25 @@ function initPagination() {
     }
 }
 
-// Updated insertVoiceAssistant function to ensure embed is correctly inserted
-function insertVoiceAssistant(embedCode) {
-    const container = document.getElementById('voice-assistant-container');
-    if (container) {
-        // Clear any existing content
-        container.innerHTML = '';
-        
-        // Insert the new embed code
-        container.innerHTML = embedCode;
-        console.log('ElevenLabs Voice Assistant embed inserted');
-    } else {
-        // Create the container if it doesn't exist
-        const newContainer = document.createElement('div');
-        newContainer.id = 'voice-assistant-container';
-        newContainer.className = 'voice-assistant-container';
-        document.body.appendChild(newContainer);
-        newContainer.innerHTML = embedCode;
-        console.log('Created and inserted ElevenLabs Voice Assistant embed');
+// Simple function to insert the ElevenLabs voice assistant
+function insertElevenLabsVoiceAssistant() {
+    // Get or create the container
+    let container = document.getElementById('voice-assistant-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'voice-assistant-container';
+        container.className = 'voice-assistant-container';
+        document.body.appendChild(container);
     }
     
-    // Force a reflow to ensure the container is properly positioned and displayed
-    setTimeout(() => {
-        const assistantContainer = document.getElementById('voice-assistant-container');
-        if (assistantContainer) {
-            assistantContainer.style.display = 'none';
-            void assistantContainer.offsetHeight; // Force reflow
-            assistantContainer.style.display = 'flex';
-        }
-    }, 1000);
+    // Clear any existing content
+    container.innerHTML = '';
+    
+    // Insert the embed code directly
+    container.innerHTML = `<elevenlabs-convai agent-id="QEf17rEjtX47iwpSuaG4"></elevenlabs-convai><script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>`;
+    
+    console.log('ElevenLabs Voice Assistant embed inserted');
 }
-
-// Call the function immediately with the provided embed code
-window.insertVoiceAssistant(
-    `<elevenlabs-convai agent-id="QEf17rEjtX47iwpSuaG4"></elevenlabs-convai><script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>`
-);
 
 // Element visibility tracking for voice assistant context awareness
 // This helps the voice assistant know what's currently visible on the screen
