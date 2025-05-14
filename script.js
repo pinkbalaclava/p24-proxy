@@ -162,18 +162,17 @@ function insertElevenLabsVoiceAssistant() {
     // Clear any existing content
     container.innerHTML = '';
     
-    // Create an iframe to embed the ElevenLabs Talk-To URL
-    const iframe = document.createElement('iframe');
-    iframe.src = 'https://elevenlabs.io/app/talk-to?agent_id=QEf17rEjtX47iwpSuaG4';
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
-    iframe.style.border = 'none';
-    iframe.style.borderRadius = '8px';
+    // Insert the embed code directly
+    container.innerHTML = `<elevenlabs-convai agent-id="QEf17rEjtX47iwpSuaG4"></elevenlabs-convai>`;
     
-    // Add the iframe to the container
-    container.appendChild(iframe);
+    // Create and append the script element separately to ensure it loads properly
+    const script = document.createElement('script');
+    script.src = 'https://elevenlabs.io/convai-widget/index.js';
+    script.async = true;
+    script.type = 'text/javascript';
+    document.body.appendChild(script);
     
-    console.log('ElevenLabs Voice Assistant embed inserted as iframe');
+    console.log('ElevenLabs Voice Assistant embed inserted');
 }
 
 // Element visibility tracking for voice assistant context awareness
