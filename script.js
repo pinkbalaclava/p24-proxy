@@ -150,20 +150,10 @@ function initPagination() {
 
 // Function to insert the ElevenLabs voice assistant
 function insertElevenLabsVoiceAssistant() {
-    // Get or create the container
-    let container = document.getElementById('voice-assistant-container');
-    if (!container) {
-        container = document.createElement('div');
-        container.id = 'voice-assistant-container';
-        container.className = 'voice-assistant-container';
-        document.body.appendChild(container);
-    }
-    
-    // Clear any existing content
-    container.innerHTML = '';
-    
-    // Insert the embed code directly
-    container.innerHTML = `<elevenlabs-convai agent-id="QEf17rEjtX47iwpSuaG4"></elevenlabs-convai>`;
+    // Insert the embed code directly into the body
+    const embedElement = document.createElement('div');
+    embedElement.innerHTML = `<elevenlabs-convai agent-id="QEf17rEjtX47iwpSuaG4"></elevenlabs-convai>`;
+    document.body.appendChild(embedElement);
     
     // Create and append the script element separately to ensure it loads properly
     const script = document.createElement('script');
