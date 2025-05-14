@@ -635,7 +635,12 @@ h1 {
   bottom: 20px;
   right: 20px;
   z-index: 9999;
+  width: 200px;
+  height: 200px;
   pointer-events: auto;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Styles */
