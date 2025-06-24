@@ -7,6 +7,23 @@ const Index = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
 
+  // Load the ElevenLabs ConvAI widget
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
+    script.async = true;
+    script.type = 'text/javascript';
+    document.body.appendChild(script);
+    
+    return () => {
+      // Cleanup script on component unmount
+      const existingScript = document.querySelector('script[src="https://unpkg.com/@elevenlabs/convai-widget-embed"]');
+      if (existingScript) {
+        document.body.removeChild(existingScript);
+      }
+    };
+  }, []);
+
   const toggleFavorite = (id: number) => {
     const newFavorites = new Set(favorites);
     if (newFavorites.has(id)) {
@@ -70,6 +87,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* ElevenLabs ConvAI Widget */}
+      <elevenlabs-convai agent-id="agent_01jxs6d8d7fs9vmgc3g26bxgm2"></elevenlabs-convai>
+      
       {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
