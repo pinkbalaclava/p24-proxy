@@ -1,20 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const Index = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
-
-  // ✅ Ref to hold widget container
   const widgetRef = useRef<HTMLDivElement>(null);
 
   // ✅ Inject widget + script on mount
   useEffect(() => {
-    if (widgetRef.current) {
-      widgetRef.current.innerHTML = `
-        <elevenlabs-convai agent-id="agent_01jxs6d8d7fs9vmgc3g26bxgm2"></elevenlabs-convai>
-      `;
-    }
-
     const script = document.createElement('script');
     script.src = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
     script.async = true;
@@ -22,14 +14,11 @@ const Index = () => {
     document.body.appendChild(script);
 
     return () => {
-      const existingScript = document.querySelector(
+      const existing = document.querySelector(
         'script[src="https://unpkg.com/@elevenlabs/convai-widget-embed"]'
       );
-      if (existingScript) {
-        document.body.removeChild(existingScript);
-      }
-      if (widgetRef.current) {
-        widgetRef.current.innerHTML = '';
+      if (existing) {
+        document.body.removeChild(existing);
       }
     };
   }, []);
@@ -46,17 +35,18 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* ✅ Injected container for ElevenLabs ConvAI Widget */}
-      <div ref={widgetRef} />
+      {/* ✅ ElevenLabs ConvAI Widget */}
+      <div ref={widgetRef}>
+        <elevenlabs-convai agent-id="agent_01jxs6d8d7fs9vmgc3g26bxgm2"></elevenlabs-convai>
+      </div>
 
-      {/* Header */}
+      {/* ⬇️ Your existing UI continues */}
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-xl font-semibold text-gray-900">My Property Grid</h1>
+          <h1 className="text-xl font-bold py-4">Your Property Listings</h1>
         </div>
       </header>
-
-      {/* ...rest of your component */}
+      {/* Add your listing grid or content below */}
     </div>
   );
 };
