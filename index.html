@@ -1,41 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Property 24 Proxy</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #f9f9f9;
-    }
-
-    .container {
-      padding: 2rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    elevenlabs-convai {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-      /* Optional: remove default shadow or styling */
-      box-shadow: none !important;
-      filter: none !important;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property To Rent in Ballito and Dolphin Coast</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="description" content="Find properties to rent in Ballito and Dolphin Coast">
 </head>
 <body>
-  <div class="container">
-    <h1>Property Listing Voice Bot</h1>
-    <p>This is a prototype for voice interaction with property listings using ElevenLabs AI.</p>
-  </div>
+  <!-- Header with logo and search -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="/" class="logo" id="site-logo">
+        <img src="public/lovable-uploads/551b38b3-4326-4982-af32-dcd02b149160.png" alt="Private Property Logo" class="logo-img">
+      </a>
 
-  <!-- ✅ Correct ElevenLabs widget -->
-  <elevenlabs-convai agent-id="agent_01jxs6d8d7fs9vmgc3g26bxgm2"></elevenlabs-convai>
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="location-search" class="search-input" placeholder="Ballito and Dolphin Coast" value="Ballito and Dolphin Coast">
+          <button class="clear-search"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="filter-controls">
+          <div class="dropdown" id="property-type-dropdown">
+            <button class="dropdown-toggle">
+              Property Types
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-menu">
+              <div class="dropdown-item"><input type="checkbox" id="house"> <label for="house">House</label></div>
+              <div class="dropdown-item"><input type="checkbox" id="apartment"> <label for="apartment">Apartment</label></div>
+              <div class="dropdown-item"><input type="checkbox" id="townhouse"> <label for="townhouse">Townhouse</label></div>
+            </div>
+          </div>
+
+          <div class="dropdown" id="min-price-dropdown">
+            <button class="dropdown-toggle">
+              Min price
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-menu">
+              <div class="dropdown-item">R 5 000</div>
+              <div class="dropdown-item">R 10 000</div>
+              <div class="dropdown-item">R 15 000</div>
+              <div class="dropdown-item">R 20 000</div>
+            </div>
+          </div>
+
+          <span class="price-separator">-</span>
+
+          <div class="dropdown" id="max-price-dropdown">
+            <button class="dropdown-toggle">
+              Max price
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-menu">
+              <div class="dropdown-item">R 20 000</div>
+              <div class="dropdown-item">R 25 000</div>
+              <div class="dropdown-item">R 30 000</div>
+              <div class="dropdown-item">No limit</div>
+            </div>
+          </div>
+
+          <div class="dropdown" id="beds-dropdown">
+            <button class="dropdown-toggle">
+              Any beds
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-menu">
+              <div class="dropdown-item">Any</div>
+              <div class="dropdown-item">1+</div>
+              <div class="dropdown-item">2+</div>
+              <div class="dropdown-item">3+</div>
+              <div class="dropdown-item">4+</div>
+            </div>
+          </div>
+
+          <button class="filter-btn" id="filters-button">Filters</button>
+          <button class="search-btn" id="search-button">Search</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <section class="page-header">
+        <h1 id="page-title">Property To Rent in Ballito and Dolphin Coast</h1>
+        <div class="breadcrumb" id="breadcrumb-nav">
+          <a href="/" class="breadcrumb-item">South Africa</a>
+          <i class="fas fa-chevron-right breadcrumb-separator"></i>
+          <a href="/kwazulu-natal" class="breadcrumb-item">KwaZulu Natal</a>
+          <i class="fas fa-chevron-right breadcrumb-separator"></i>
+          <span class="breadcrumb-item current">Ballito and Dolphin Coast</span>
+        </div>
+
+        <div class="results-controls">
+          <div class="results-count" id="results-count">1-20 of 1 618 results</div>
+          <div class="sort-control">
+            <span class="sort-label">Sort by</span>
+            <div class="dropdown" id="sort-dropdown">
+              <button class="dropdown-toggle">
+                Featured
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="dropdown-menu">
+                <div class="dropdown-item">Featured</div>
+                <div class="dropdown-item">Price (Low to High)</div>
+                <div class="dropdown-item">Price (High to Low)</div>
+                <div class="dropdown-item">Newest</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="content-wrapper">
+        <section class="property-listings" id="property-listings">
+          <!-- Your 4 property cards go here, unchanged -->
+          <!-- ... -->
+        </section>
+
+        <aside class="sidebar">
+          <!-- Sidebar content unchanged -->
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Footer content unchanged -->
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Private Property. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Voice Assistant Embed -->
+  <elevenlabs-convai agent-id="agent_01jxs6d8d7fs9vmgc3g26bxgm2" style="box-shadow: none !important; filter: none !important;"></elevenlabs-convai>
   <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+  <!-- Other Scripts -->
+  <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  <script src="script.js"></script>
 </body>
 </html>
