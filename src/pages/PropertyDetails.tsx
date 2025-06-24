@@ -1,4 +1,4 @@
-
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,6 +7,36 @@ import { MapPin, Bed, Bath, Car, Home } from 'lucide-react';
 
 export default function PropertyDetails() {
   const { id } = useParams();
+
+  useEffect(() => {
+    // Remove any existing widgets
+    const existingWidget = document.querySelector('elevenlabs-convai');
+    if (existingWidget) existingWidget.remove();
+
+    // Remove any existing scripts
+    const existingScript = document.querySelector('script[src="https://unpkg.com/@elevenlabs/convai-widget-embed"]');
+    if (existingScript) existingScript.remove();
+
+    // Inject the script
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
+    script.async = true;
+    script.type = 'text/javascript';
+    document.body.appendChild(script);
+
+    // Inject the widget
+    const widget = document.createElement('elevenlabs-convai');
+    widget.setAttribute('agent-id', 'agent_01jxs6d8d7fs9vmgc3g26bxgm2');
+    document.body.appendChild(widget);
+
+    return () => {
+      // Clean up
+      const scriptToRemove = document.querySelector('script[src="https://unpkg.com/@elevenlabs/convai-widget-embed"]');
+      const widgetToRemove = document.querySelector('elevenlabs-convai');
+      if (scriptToRemove) scriptToRemove.remove();
+      if (widgetToRemove) widgetToRemove.remove();
+    };
+  }, []);
 
   // Mock property data based on the Property24 listing
   const property = {

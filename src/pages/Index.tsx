@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import PropertyCard from '@/components/PropertyCard';
 import { Button } from '@/components/ui/button';
@@ -12,26 +11,32 @@ export default function Index() {
     const existingWidget = document.querySelector('elevenlabs-convai');
     if (existingWidget) existingWidget.remove();
 
-    // Inject the correct script
+    // Remove any existing scripts
+    const existingScript = document.querySelector('script[src="https://unpkg.com/@elevenlabs/convai-widget-embed"]');
+    if (existingScript) existingScript.remove();
+
+    // Inject the script
     const script = document.createElement('script');
     script.src = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
     script.async = true;
     script.type = 'text/javascript';
     document.body.appendChild(script);
 
-    // Inject your correct widget tag
+    // Inject the widget
     const widget = document.createElement('elevenlabs-convai');
     widget.setAttribute('agent-id', 'agent_01jxs6d8d7fs9vmgc3g26bxgm2');
     document.body.appendChild(widget);
 
     return () => {
       // Clean up
-      script.remove();
-      widget.remove();
+      const scriptToRemove = document.querySelector('script[src="https://unpkg.com/@elevenlabs/convai-widget-embed"]');
+      const widgetToRemove = document.querySelector('elevenlabs-convai');
+      if (scriptToRemove) scriptToRemove.remove();
+      if (widgetToRemove) widgetToRemove.remove();
     };
   }, []);
 
-  // Mock property data
+  // Mock property data - first property matches the PropertyDetails page
   const properties = [
     {
       id: '1',
