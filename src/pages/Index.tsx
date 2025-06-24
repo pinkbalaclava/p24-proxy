@@ -7,21 +7,6 @@ const Index = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
 
-  // Load the doorbell widget
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://pinkbalaclava.github.io/doorbell-widget/widget.js';
-    document.body.appendChild(script);
-    
-    return () => {
-      // Cleanup script on component unmount
-      const existingScript = document.querySelector('script[src="https://pinkbalaclava.github.io/doorbell-widget/widget.js"]');
-      if (existingScript) {
-        document.body.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   const toggleFavorite = (id: number) => {
     const newFavorites = new Set(favorites);
     if (newFavorites.has(id)) {
